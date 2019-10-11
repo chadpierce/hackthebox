@@ -1,5 +1,5 @@
 # Title: Lame
-# Date: 2019-10-11
+  Date: 2019-10-11
 
 This box is rated very easy, probably the easiest there is. I've played with HTB a bit but never really focused much on it. I'm planning to work through the boxes starting with the easiest. I've done a few but have always been _very_ bad at documenting things. So this is my first actual writeup. 
 
@@ -85,7 +85,7 @@ The exploit didn't work out of the box so I moved on thinking maybe this was a t
 
 ## Samba
 
-I moved on to the Samba shares. I first used the Impacket (https://github.com/SecureAuthCorp/impacket)smbclient.py script to try connecting:
+I moved on to the Samba shares. I first used the Impacket (https://github.com/SecureAuthCorp/impacket) smbclient.py script to try connecting:
 
 ```
 smbclient.py lame
@@ -103,14 +103,14 @@ use auxiliary/scanner/smb/smb_version
 ...set up options and executed...
 ```
 
-to find samba version...
+and then:
 
 ```
 use exploit/multi/samba/usermap_script
 ...set up options and executed...
 ```
 
-To my surprise running this popped a shell?!
+To my surprise running this popped a shell?! I was kind of blindly following the site and didn't realize it would actually work.
 
 ## User flag
 
