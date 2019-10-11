@@ -5,26 +5,20 @@ This box is rated very easy, probably the easiest there is. I've played with HTB
 
 ## Enumeration
 
-Started with a quick scan of common ports:
+Kicked off with a quick port scan with service detection, which returned the following:
 
 ```
-sudo nmap -PE -PM -PS 21,22,23,25,26,53,80,81,110,111,113,135,139,143,179,199,443,445,465,514,548,554,587,993,995 lame
-```
-
-Kicked off a more thorough scan in parallel, but killed it since it seemed very unnecessary:
-
-```
-sudo nmap -p 1-65535 -sV -sS -T4 lame
-```
-
-The quick scan returned the following open ports:
-
-```
-PORT    STATE SERVICE
-21/tcp  open  ftp
-22/tcp  open  ssh
-139/tcp open  netbios-ssn
-445/tcp open  microsoft-ds
+$ sudo nmap -sV -sS -T4 lame 
+Starting Nmap 7.80 ( https://nmap.org ) at 2019-10-11 14:33 CDT
+Nmap scan report for lame (10.10.10.3)
+Host is up (0.094s latency).
+Not shown: 996 filtered ports
+PORT    STATE SERVICE     VERSION
+21/tcp  open  ftp         vsftpd 2.3.4
+22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 ## FTP Red Herring? Or bad hacker?
@@ -85,7 +79,7 @@ The exploit didn't work out of the box so I moved on thinking maybe this was a t
 
 ## Samba
 
-I moved on to the Samba shares. I first used the Impacket (https://github.com/SecureAuthCorp/impacket) smbclient.py script to try connecting:
+I moved on to the Samba shares. I first used the __Impacket__ (https://github.com/SecureAuthCorp/impacket) smbclient.py script to try connecting:
 
 ```
 smbclient.py lame
@@ -118,7 +112,7 @@ Once I got the shell I found the user flag under /home/makis
 
 ## Root flag
 
-I ran "whoami" and was surprised that I'd popped a root shell. The root flag was surpringly in the /root folder.
+I ran "whoami" and was surprised that I'd popped a root shell. The root flag was surprisingly in the /root folder.
 
 ## Endnotes
 
