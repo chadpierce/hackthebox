@@ -85,10 +85,10 @@ I moved on to the Samba shares. I first used the __Impacket__ (https://github.co
 smbclient.py lame
 ```
 
-I found some shares but nothing really very interesting on them. I also ran "enum4linux" on the box but didn't really make it to going through the results because while it was running I moved on to just doing a bit of research and just did a search on "exploit open smb share". I came across this site: 
+I found some shares but nothing really very interesting on them. I also ran "enum4linux" on the box but didn't really make it to going through the results because while it was running I moved on to just doing a bit of research and searched "exploit open smb share". I came across this site: 
 https://resources.infosecinstitute.com/hacking-and-gaining-access-to-linux-by-exploiting-samba-service/#gref 
 
-I ran through the Metasploit enumeration and was kinda shocked when a shell just popped. 
+I ran through the Metasploit commands and was kinda shocked when a shell just popped. 
 
 I ran through the following:
 
