@@ -5,7 +5,7 @@ This box is rated very easy, probably the easiest there is. I've played with HTB
 
 ## Enumeration
 
-Kicked off with a quick port scan with service detection, which returned the following:
+Kicked things off with a quick port scan with service detection, which returned the following:
 
 ```
 $ sudo nmap -sV -sS -T4 lame 
@@ -23,9 +23,11 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 ## FTP Red Herring? Or bad hacker?
 
-The first thing I did was check out the ftp server. I was able to log in anonymously and noticed the server was vsFTPd v2.3.4. I recognized this as a pretty cool possible vulnerability and think I may have actually used it for a CTF challenge I built a few years back. Here is the background:
+The first thing I did was check out the ftp server. I was able to log in anonymously and noticed the server was vsFTPd v2.3.4. I recognized this as a pretty cool possible vulnerability and think I may have actually used it for a CTF challenge I built a few years back. Here is the background on the exploit:
 
 > This module exploits a malicious backdoor that was added to the VSFTPD download archive. This backdoor was introduced into the vsftpd-2.3.4.tar.gz archive between June 30th 2011 and July 1st 2011 according to the most recent information available. This backdoor was removed on July 3rd 2011. 
+
+This was not a security hole in vsFTPd itself. A hacker compromised the download site and uploaded their own code that included a backdoor. So if the software was downloaded and installed during that time frame, the backdoor was there.
 
 I then kicked off Metasploit (msfconsole) and searched for vsftpd:
 
@@ -75,7 +77,7 @@ msf5 exploit(unix/ftp/vsftpd_234_backdoor) > run
 [*] Exploit completed, but no session was created.
 ```
 
-The exploit didn't work out of the box so I moved on thinking maybe this was a trick and the vulnerable version of the server was not installed on the box. Since this box is rated super easy I figured it wouldn't take that much work.
+The exploit didn't work out of the box so I moved on thinking maybe this was a trick and the vulnerable version of the server was not installed. Since this box is rated super easy I figured it wouldn't take that much work.
 
 ## Samba
 
