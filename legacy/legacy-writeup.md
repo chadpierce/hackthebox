@@ -87,3 +87,4 @@ Nothing else needed to happen for root, the flag was readable here: C:\Documents
 
 This one was super easy. Nothing really of note here other than it made me laugh that I guessed a working exploit. Way to make me feel good about myself, HTB!
 
+One thing I'd like to do is dive into these exploits to see how they are working and maybe even try running them manually. I may revisit these 2 first boxes (this one and Lame) and give that a shot. Metasploit makes things trivial, but it'd be good to take a look under the hood.
