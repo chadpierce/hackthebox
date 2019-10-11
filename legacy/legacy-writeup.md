@@ -1,11 +1,11 @@
 # Title: Legacy
   Date: 2019-10-11
 
-This is the second box in this run through of HTB machines. It was easy, and much easier than the first one I did, *Lame*.
+This is the second box in this run through of HTB machines. It was easy - much easier than the first one I did, __Lame__.
 
 ## Enumeration
 
-I started of with an nmap scan with version detection. The machine is XP - this should be simple!
+I started off by running an nmap scan with version detection. The machine is XP - this should be simple!
 
 ```
 $ nmap -Pn -sV legacy
@@ -23,10 +23,11 @@ Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:mi
 I didn't really even do any research for this one, I just searched for "smb" in Metasploit. 
 
 ```
-search smb
+msf5 > search smb
 ```
 
 And looked for old and highly rated exploits. I got lucky and the first thing I tried worked. /shrug 
+
 This is the one I used:
 
 ```   
