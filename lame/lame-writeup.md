@@ -122,7 +122,7 @@ I ran "whoami" and was surprised that I'd popped a root shell. The root flag was
 
 ## Endnotes
 
-I'm curious to go take a look at other writeups for this one. I have a feeling there are several ways to get into this one. 
+I'm curious to go take a look at other writeups for this one. I have a feeling there are several paths to take.
 
 Here are the details on the Samba exploit that surprised me:
 
