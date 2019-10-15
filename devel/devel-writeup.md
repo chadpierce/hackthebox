@@ -17,9 +17,7 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
-We've got a Windows machine running IIS 7.5 and FTP. 
-
-I first visited the website, and saw this familiar image:
+We've got a Windows machine running IIS 7.5 and FTP. I first visited the website, and saw this familiar image:
 
 <img src="https://raw.githubusercontent.com/chadpierce/htb/master/devel/welcome.png" alt="welcome" width="400"/>
 
@@ -55,7 +53,7 @@ Which didn't give me much to go on. Then I ran dirb with the IIS wordlist, but d
 ```
 $ dirb http://devel /usr/share/wordlists/dirb/vulns/iis.txt -o devel-dirb-iis.txt
 ```
-That also came up with nothing interesting so I gave up on the webserver and started focusing on FTP. Anonymous login was enabled and I could upload files to the root of the webserver so I suspected this was the way in. This is IIS 7.5 which is over a decade old so there's bound to be some vulnerabilities. Here's what it looked like after I logged in, you can see the files being served by the webserver:
+That also came up with nothing interesting so I moved on to the FTP server. Anonymous login was enabled and I could upload files to the root of the webserver so I suspected this was the way in. This is IIS 7.5 which is over a decade old so there's bound to be some vulnerabilities. Here's what it looked like after I logged in, you can see the files being served by the webserver:
 
 ```
 $ ftp devel
