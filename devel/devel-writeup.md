@@ -22,7 +22,6 @@ We've got a Windows machine running IIS 7.5 and FTP.
 I first visited the website, and saw this familiar image:
 
 <img src="https://raw.githubusercontent.com/chadpierce/htb/master/devel/welcome.png" alt="welcome" width="400"/>
-![Welcome](https://chadpierce.net/blog/2019/10/15/welcome.png)
 
 The next thing I did was kick off Nikto:
 
