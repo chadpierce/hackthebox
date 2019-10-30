@@ -3,7 +3,7 @@ Date: 2019-10-20
 
 ## Enumeration
 
-As always, scan the ports first...
+As always, scan for open ports first...
 
 	$ nmap -A -T4 beep
 	Starting Nmap 7.80 ( https://nmap.org ) at 2019-10-16 22:28 CDT
@@ -43,7 +43,7 @@ As always, scan the ports first...
 	Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 	Nmap done: 1 IP address (1 host up) scanned in 350.40 seconds
 
-A lot of ports open here. The webserver was running Elastix, and open source PBX (Private Branch Exchange...phone stuff).
+A lot of things listening here. The webserver was running Elastix, an open source PBX (Private Branch Exchange...phone stuff).
 
 I took a look at the SMTP server with __metasploit__:
 
@@ -54,21 +54,19 @@ I took a look at the SMTP server with __metasploit__:
 	[*] beep:25               - Scanned 1 of 1 hosts (100% complete)
 	[*] Auxiliary module execution completed
 
-Nothing super useful there. I tried several other things with other open ports that I didn't take note of but didn't really come up with anything. 
+Nothing super useful there. I tried several other things with other open ports that I didn't take note of because they led nowhere. I also ran __dirb__ against the webserver but kept getting errors - I think this was likely because the cert is expired on this box (it was a retired htb machine while I was working on it).
 
-I also ran __dirb__ against the webserver but kept getting errors - I think this was likely because the cert is expired on this box (it was a retired htb machine while I was working on it).
+I then tried __dirbuster__ and was able to get it running without a hitch. There are lots of interesting directories and after all of the enumeration to this point it is more than clear that this is a telephony server. Kinda cool. In a past life I managed a PBX and it was kind of neat just because the tech was so, uhh, ancient and straighforward.
 
-I then tried __dirbuster__ and was able to get it running without a hitch. There are lots of interesting directories and after all of the enumeration to this point it is more than clear that this is a telephony server. Kinda cool. In a past life I managed a PBX and it was kind of neat just because the tech was so, uhh, ancient. 
-
-I kicked off a scan using the 
-/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
-wordlist and came up with some interesting finds - vtigercrm being the one of most interest after looking into a few others.
+Anyway, I kicked off a scan using the 
+_/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt_
+wordlist and came up with some interesting finds - vtigercrm being the one of most interest after looking into some of the others.
 
 <img src="https://raw.githubusercontent.com/chadpierce/htb/master/beep/dirbuster-results.png" alt="dirbuster results" width="600"/>
 
 ## Exploitation
 
-This looked to be an opensource CRM - interesting - and the login page helpfully lets you know you're looking at version 5.1.0. I searched for exploits in __metasploit__ and came up with this:
+VTiger looked to be an opensource CRM - interesting - and the login page helpfully lets you know you're looking at version 5.1.0. I searched for exploits in __metasploit__ and came up with this:
 
 	msf5 exploit(multi/http/vtiger_soap_upload) > run
 	
